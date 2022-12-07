@@ -14,7 +14,7 @@ $tab_remote = explode(".", $var_remote);
 $calcul_ip = $tab_remote[0] * 256 * 256 * 256 + $tab_remote[1] * 256 * 256 + $tab_remote[2] * 256 + $tab_remote[3];
 
 try {
-$pdo = new PDO($PDOConnectString, BDD_LOGIN, BDD_PASSWORD);
+$pdo = new PDO($pdo_connect_string, BDD_LOGIN, BDD_PASSWORD);
 } catch (PDOException $e) {
 echo $e;
 }
@@ -35,6 +35,7 @@ if($infos['country_code'] == "FR") {
 <head>
     <title>GEOIP</title>
     <meta charset='utf-8'>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <style>
         table {
             border: solid;
