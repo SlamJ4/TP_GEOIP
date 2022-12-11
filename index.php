@@ -35,76 +35,61 @@ if($infos['country_code'] == "FR") {
 <head>
     <title>GEOIP</title>
     <meta charset='utf-8'>
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-    <style>
-        table {
-            border: solid;
-	        border-collapse: collapse;
-        }
-        tr {
-            border: solid;
-        }
-        th {
-            border: solid;
-        }
-        td {
-            border: solid;
-        }
-        .contains {
-            text-align: center;
-        }
-    </style>
+    <link rel="shortcut icon" type="image/png" href="image/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
 </head>
 <body>
-    <div class="contains">
-        <h1>Bienvenue en France !</h1>
+    <div class="border">
+        <div class="contains">
+            <h1>Bienvenue en France !</h1>
 
-        <p>Temps de réponse : <?php echo ((($end_time - $start_time) * 100)." ms");?></p>
-        <p><?php echo "Votre IP Public : ".$var_remote; ?></p>
-        <p> Voici votre localisation</p>
-        <table align="center">
-            <tr>
-                <th>
-                    Country Code
-                </th>
-                <th>
-                    Country Name
-                </th>
-                <th>
-                    Region Name
-                </th>
-                <th>
-                    City Name
-                </th>
-                <th>
-                    Latitude
-                </th>
-                <th>
-                    Longitude
-                </th>
-            </tr>
+            <p>Temps de réponse : <?php echo ((($end_time - $start_time) * 1000)." ms");?></p>
+            <p><?php echo "Votre IP Public : ".$var_remote; ?></p>
+            <p> Voici votre localisation</p>
+            <table align="center">
+                <tr>
+                    <th>
+                        Country Code
+                    </th>
+                    <th>
+                        Country Name
+                    </th>
+                    <th>
+                        Region Name
+                    </th>
+                    <th>
+                        City Name
+                    </th>
+                    <th>
+                        Latitude
+                    </th>
+                    <th>
+                        Longitude
+                    </th>
+                </tr>
 
-            <tr>
-                <td>
-                    <?php echo $infos['country_code']; ?>
-                </td>
-                <td>
-                    <?php echo $infos['country_name']; ?>
-                </td>
-                <td>
-                    <?php echo $infos['region_name']; ?>
-                </td>
-                <td>
-                    <?php echo $infos['city_name']; ?>
-                </td>
-                <td>
-                    <?php echo $infos['lagitude']; ?>
-                </td>
-                <td>
-                    <?php echo $infos['longitude']; ?>
-                </td>
-            </tr>
-        </table>
+                <tr>
+                    <td>
+                        <?php echo $infos['country_code']; ?>
+                    </td>
+                    <td>
+                        <?php echo $infos['country_name']; ?>
+                    </td>
+                    <td>
+                        <?php echo $infos['region_name']; ?>
+                    </td>
+                    <td>
+                        <?php echo $infos['city_name']; ?>
+                    </td>
+                    <td>
+                        <?php echo $infos['lagitude']; ?>
+                    </td>
+                    <td>
+                        <?php echo $infos['longitude']; ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>
