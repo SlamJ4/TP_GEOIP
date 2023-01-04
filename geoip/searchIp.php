@@ -1,10 +1,12 @@
 <?php
+	// Variables pour la connexion
 		define("BDD_HOST", "localhost");
 		define("BDD_NAME", "tp_geoip");
 		define("BDD_LOGIN", "jordan");
 		define("BDD_PASSWORD", "Ytreza4321");
 
         $pdo_connect_string = sprintf("mysql:host=%s;dbname=%s;charset=utf8", BDD_HOST, BDD_NAME);
+	// Connexion à la BDD
 		try 
 		{
 			$pdo = new PDO($pdo_connect_string, BDD_LOGIN, BDD_PASSWORD);
@@ -13,7 +15,7 @@
 		{
 			echo $e;
 		}
-		
+	// Recherche de l'IP dans la base et renvoie un tableau contenant les différentes infos
 		function searchIp ($pdo,$ip) {
 			/*
 				L'IP doit d'abord être calculée
