@@ -1,4 +1,5 @@
 <?php
+// Varaible nécessaires pour connection à la base et la requête préparée
 define("BDD_HOST", "127.0.0.1");
 define("BDD_NAME", "tp_geoip");
 define("BDD_LOGIN", "jordan");
@@ -11,8 +12,10 @@ $pdo_connect_string = sprintf("mysql:host=%s;dbname=%s;charset=utf8", BDD_HOST, 
 $var_remote = "37.58.179.26";  // IP serveur CFAI
 $tab_remote = explode(".", $var_remote);
 
+// Transformation de l'IP en entier de 32bits
 $calcul_ip = $tab_remote[0] * 256 * 256 * 256 + $tab_remote[1] * 256 * 256 + $tab_remote[2] * 256 + $tab_remote[3];
 
+// Connexion à la BDD
 try {
 $pdo = new PDO($pdo_connect_string, BDD_LOGIN, BDD_PASSWORD);
 } catch (PDOException $e) {
@@ -26,6 +29,7 @@ $end_time = microtime(true);
 
 $infos = $search_ip -> fetch(PDO::FETCH_ASSOC);
 
+// Affichage de la page si en France avec infos de l'IP
 if($infos['country_code'] == "FR") {
 ?>
 
@@ -94,6 +98,7 @@ if($infos['country_code'] == "FR") {
 </body>
 </html>
 <?php
+// Si pas en Fr renvoie erreur 403				    
 } else {
 	http_response_code(403);
 }
