@@ -1,4 +1,5 @@
 <?php
+// Tableau d'ip générées par random_ip.php
 $tab_ip = [
 	'37.58.179.26',
 	'192.168.122.143',
