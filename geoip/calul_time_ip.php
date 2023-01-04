@@ -1,18 +1,23 @@
 <?php
+// Récupération du tableau contenant des ip générées aléatoirement
 require_once("tab_ip.php");
 
+// Variables pour connexion BDD et requête préparée
 $bdd_host = "127.0.0.1";
 $bdd_name = "tp_geoip";
 $bdd_login = "jordan";
 $bdd_password = "Ytreza4321";
 $req_sql = "SELECT * FROM geoip WHERE ip_from <= ? AND ip_to >= ?";
 
+// Connexion à la BDD
 try {
     $pdo = new PDO("mysql:host=$bdd_host;dbname=$bdd_name;charset=utf8",$bdd_login, $bdd_password);
 } catch (PDOException $e) {
     echo $e;
 }
 $start_time = microtime(true);
+
+// Recherche de chaque ip dans la base
 foreach($tab_ip as $ip) {
     $tab_remote = explode(".", $ip);
     $calcul_ip = $tab_remote[0] * 256 * 256 * 256 + $tab_remote[1] * 256 * 256 + $tab_remote[2] * 256 + $tab_remote[3];
@@ -27,4 +32,5 @@ foreach($tab_ip as $ip) {
 }
 $end_time = microtime(true);
 
+// Affichage du temps de traitement en ms
 echo ($end_time - $start_time) / count($tab_ip) * 1000;
